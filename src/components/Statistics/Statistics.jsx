@@ -1,22 +1,25 @@
-import css from './Statistics.module.css';
+// import css from './Statistics.module.css';
 import { setBg } from '../../utilities/setBgColor';
-
+import {
+  StatisticsStyle,
+  Title,
+  StatList,
+  Item,
+  Percentage,
+  Label,
+} from './Statistics.styled';
 export const Statistics = ({ title, stats }) => {
   return (
-    <section className={css.statistics}>
-      {title && <h2 className={css.title}>Upload stats</h2>}
-      <ul className={css.statList}>
+    <StatisticsStyle>
+      {title && <Title>Upload stats</Title>}
+      <StatList>
         {stats.map(stat => (
-          <li
-            key={stat.id}
-            className={css.item}
-            style={{ backgroundColor: setBg() }}
-          >
-            <span className={css.label}>{stat.label}</span>
-            <span className={css.percentage}>{stat.percentage} %</span>
-          </li>
+          <Item key={stat.id} style={{ backgroundColor: setBg() }}>
+            <Label>{stat.label}</Label>
+            <Percentage>{stat.percentage} %</Percentage>
+          </Item>
         ))}
-      </ul>
-    </section>
+      </StatList>
+    </StatisticsStyle>
   );
 };

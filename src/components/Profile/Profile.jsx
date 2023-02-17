@@ -1,32 +1,28 @@
 import PropTypes from 'prop-types';
-import css from './Profile.module.css';
-//
-export const Profile = ({ username, tag, location, avatar, stats }) => {
-  const { followers, likes, views } = stats;
-  return (
-    <div className={css.profile}>
-      <div className={css.description}>
-        <img src={avatar} alt="User avatar" className={css.avatar} />
-        <p className={css.name}>{username}</p>
-        <p className={css.tag}>@{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+import {
+  ProfileStyle,
+  Description,
+  Avatar,
+  Name,
+  Tag,
+  Location,
+  Stats,
+} from './Profile.styled';
 
-      <ul className={css.stats}>
-        <li className={css.statsList}>
-          <span className={css.label}>Followers</span>
-          <span className={css.quantity}>{followers}</span>
-        </li>
-        <li className={css.statsList}>
-          <span className={css.label}>Views</span>
-          <span className={css.quantity}>{likes}</span>
-        </li>
-        <li className={css.statsList}>
-          <span className={css.label}>Likes</span>
-          <span className={css.quantity}>{views}</span>
-        </li>
-      </ul>
-    </div>
+import { ProfileItem } from './ProfileItem/ProfileItem';
+export const Profile = ({ username, tag, location, avatar, stats }) => {
+  return (
+    <ProfileStyle>
+      <Description>
+        <Avatar src={avatar} alt="User avatar" />
+        <Name>{username}</Name>
+        <Tag>@{tag}</Tag>
+        <Location>{location}</Location>
+      </Description>
+      <Stats>
+        <ProfileItem stats={stats} />
+      </Stats>
+    </ProfileStyle>
   );
 };
 
